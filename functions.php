@@ -1,5 +1,8 @@
 <?php
 
+
+add_theme_support('post-thumbnails'); //añadir post thumnails en el backend
+
 /**
      * 
      * Deregister WordPress default jQuery

@@ -4,7 +4,32 @@
     <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
 
     <!-- Navigation -->
-    <?php get_template_part('nav'); ?>
+    <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
+      <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item active px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="about.html">About</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <div class="container">
 
@@ -18,21 +43,21 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid w-100" src="<?php echo get_template_directory_uri();?>/img/slide-1.jpg" alt="">
+              <img class="d-block img-fluid w-100" src="img/slide-1.jpg" alt="">
               <div class="carousel-caption d-none d-md-block">
                 <h3 class="text-shadow">First Slide</h3>
                 <p class="text-shadow">This is the caption for the first slide.</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid w-100" src="<?php echo get_template_directory_uri();?>/img/slide-2.jpg" alt="">
+              <img class="d-block img-fluid w-100" src="img/slide-2.jpg" alt="">
               <div class="carousel-caption d-none d-md-block">
                 <h3 class="text-shadow">Second Slide</h3>
                 <p class="text-shadow">This is the caption for the second slide.</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid w-100" src="<?php echo get_template_directory_uri();?>/img/slide-3.jpg" alt="">
+              <img class="d-block img-fluid w-100" src="img/slide-3.jpg" alt="">
               <div class="carousel-caption d-none d-md-block">
                 <h3 class="text-shadow">Third Slide</h3>
                 <p class="text-shadow">This is the caption for the third slide.</p>
@@ -51,9 +76,9 @@
         <!-- Welcome Message -->
         <div class="text-center mt-4">
           <div class="text-heading text-muted text-lg">Welcome To</div>
-          <h1 class="my-2">Front Page</h1>
+          <h1 class="my-2">Business Casual</h1>
           <div class="text-heading text-muted text-lg">By
-            <strong>Business Casual</strong>
+            <strong>Start Bootstrap</strong>
           </div>
         </div>
       </div>
@@ -64,7 +89,7 @@
           <strong>worth visitng</strong>
         </h2>
         <hr class="divider">
-        <img class="img-fluid float-left mr-4 d-none d-lg-block" src="<?php echo get_template_directory_uri();?>/img/intro-pic.jpg" alt="">
+        <img class="img-fluid float-left mr-4 d-none d-lg-block" src="img/intro-pic.jpg" alt="">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam soluta dolore voluptatem, deleniti dignissimos excepturi veritatis cum hic sunt perferendis ipsum perspiciatis nam officiis sequi atque enim ut! Velit, consectetur.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam pariatur perspiciatis reprehenderit illo et vitae iste provident debitis quos corporis saepe deserunt ad, officia, minima natus molestias assumenda nisi velit?</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit totam libero expedita magni est delectus pariatur aut, aperiam eveniet velit cum possimus, autem voluptas. Eum qui ut quasi voluptate blanditiis?</p>
@@ -79,54 +104,6 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam soluta dolore voluptatem, deleniti dignissimos excepturi veritatis cum hic sunt perferendis ipsum perspiciatis nam officiis sequi atque enim ut! Velit, consectetur.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam pariatur perspiciatis reprehenderit illo et vitae iste provident debitis quos corporis saepe deserunt ad, officia, minima natus molestias assumenda nisi velit?</p>
       </div>
-      
-       <!-- About Section -->
-    <section class="bg-faded mb-0" id="about">
-      <div class="container">
-        <h2 class="text-center text-uppercase">Ultimos Post</h2>
-        <hr class="star-light mb-5">
-        <div class="row">
-          <?php
-            $args = array(
-              'posts_per_page' => 3
-              );
-            $query = new WP_Query($args);
-            if($query->have_posts()):while($query->have_posts()):$query->the_post();
-          ?>
-          <div class="col-lg-4 ml-auto">
-             <?php
-             if(has_post_thumbnail()){
-                 $postImg = get_the_post_thumbnail_url();
-             }else{
-                  $postImg = get_template_directory_uri() . '/img/default.png';
-             }
-              ?>
-                <img src="<?php echo $postImg; ?>" class="img-fluid"></img>
-              <?php
-                echo '<br>';
-              ?>
-                <a href="<?php the_permalink(); ?>" class="linkPost"><?php the_title();?></a>
-                <?php
-                echo '<br> Date: '; the_time('j-m-Y');
-                $new_defaults = array('extra_attr' => 'style="margin:5px"');
-                echo '<br> Autor: '; echo get_avatar(get_the_author_meta('ID'), 32, get_template_directory_uri() . '/img/default.png', 'Avatar', $new_defaults); the_author();
-                echo '<hr>';
-                the_excerpt();
-             ?>
-          </div>
-          <?php
-            endwhile;endif;
-            wp_reset_query();
-          ?>
-        </div>
-        <div class="text-center mt-4">
-          <a class="btn btn-xl btn-outline-light" href="#">
-            <i class="fa fa-download mr-2"></i>
-            Download Now!
-          </a>
-        </div>
-      </div>
-    </section>
 
     </div>
     <!-- /.container -->
